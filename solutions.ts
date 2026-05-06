@@ -10,9 +10,9 @@ const filterEvenNumbers = (arr: number[]): number[] => {
 
 // filterEvenNumbers([1, 2, 3, 4, 5, 6, -1]);
 
-const reverseString = (str: string) => {
-    const strArr = str.split("")
-    return strArr.reverse().join("")
+const reverseString = (str: string): string => {
+  const strArr = str.split("");
+  return strArr.reverse().join("");
 };
 
 // reverseString("typescript");
@@ -20,17 +20,18 @@ const reverseString = (str: string) => {
 // Problem 3:
 // Define a union type StringOrNumber and create a function checkType that uses type guards to return "String" if the input is a string or "Number" if the input is a number.
 
-// // Sample Input 1:
-// checkType("Hello");
+type StringOrNumber = string | number;
 
-// // Sample Output 1:
-// "String";
+const checkType = (param: StringOrNumber): string => {
+  if (typeof param === "string") {
+    return "String";
+  } else {
+    return "Number";
+  }
 
-// // Sample Input 2:
-// checkType(42);
+};
 
-// // Sample Output 2:
-// "Number";
+
 // Problem 4:
 // Write a generic function getProperty that takes an object and a key, then returns the value of that key. Use constraints to ensure the key exists on the object.
 

@@ -8,13 +8,10 @@ const filterEvenNumbers = (arr: number[]): number[] => {
   return result;
 };
 
-// filterEvenNumbers([1, 2, 3, 4, 5, 6, -1]);
-
 const reverseString = (str: string): string => {
   const strArr = str.split("");
   return strArr.reverse().join("");
 };
-
 
 type StringOrNumber = string | number;
 
@@ -24,43 +21,55 @@ const checkType = (param: StringOrNumber): string => {
   } else {
     return "Number";
   }
-
 };
 
+const getProperty = <T, K extends keyof T>(obj: T, key: K): T[K] => {
+  return obj[key];
+};
 
-const getProperty  = <T, K extends keyof T>(obj:T, key: K): T[K] => {
-  return obj[key]
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+}
+interface BookStatus extends Book {
+  isRead: boolean;
 }
 
+const toggleReadStatus = (book: Book): BookStatus => {
+  return { ...book, isRead: true };
+};
 
-// Problem 5:
-// Define an interface Book with properties title, author, and publishedYear. Create a function toggleReadStatus that accepts a Book object and returns a new object with an added isRead property (boolean), defaulting to true.
+class Person {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
 
-// // Sample Input:
-// const myBook = { title: "TypeScript Guide", author: "Jane Doe", publishedYear: 2024 };
-// toggleReadStatus(myBook);
+class Student extends Person {
+  grade: string;
+  constructor(name: string, age: number, grade: string) {
+    super(name, age);
+    this.grade = grade;
+  }
+  getDetails(): string {
+    return `Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+  }
+}
 
-// // Sample Output:
-// {
-//   title: "TypeScript Guide",
-//   author: "Jane Doe",
-//   publishedYear: 2024,
-//   isRead: true
-// }
-// Problem 6:
-// Create a class Person with a name and age. Then, create a subclass Student that adds a grade property. Include a method getDetails in the Student class that returns a string with the student's name, age, and grade.
-
-// // Sample Input:
-// const student = new Student("Alice", 20, "A");
-// student.getDetails();
-
-// // Sample Output:
-// "Name: Alice, Age: 20, Grade: A";
-// Problem 7:
-// Create a function getIntersection that takes two arrays of numbers and returns a new array containing only the elements that are present in both arrays.
-
-// // Sample Input:
-// getIntersection([1, 2, 3, 4, 5], [3, 4, 5, 6, 7])
-
-// // Sample Output:
-// [3, 4, 5]
+const getIntersection = (arr1: number[], arr2: number[]): number[] => {
+  const arrMap = new Map();
+  for (let i = 0; i < arr1.length; i++) {
+    arrMap.set(arr1[i], arr1[i]);
+  }
+  const result = new Set();
+  for (let i = 0; i < arr2.length; i++) {
+    if (arrMap.has(arr2[i])) {
+      result.add(arrMap.get(arr2[i]));
+    }
+  }
+  return [...result] as number[];
+};

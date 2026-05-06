@@ -1,6 +1,3 @@
-// Problem 1:
-// Create a TypeScript function filterEvenNumbers that accepts an array of numbers and returns a new array containing only the even numbers.
-
 const filterEvenNumbers = (arr: number[]): number[] => {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
@@ -8,24 +5,18 @@ const filterEvenNumbers = (arr: number[]): number[] => {
       result.push(arr[i]);
     }
   }
-  console.log(result);
   return result;
 };
 
-// // Sample Input:
-filterEvenNumbers([1, 2, 3, 4, 5, 6, -1]);
+// filterEvenNumbers([1, 2, 3, 4, 5, 6, -1]);
 
-// // Sample Output:
-// [2, 4, 6]
+const reverseString = (str: string) => {
+    const strArr = str.split("")
+    return strArr.reverse().join("")
+};
 
-// Problem 2:
-// Write a function reverseString that takes a string as input and returns the reversed version of that string.
-
-// // Sample Input:
 // reverseString("typescript");
 
-// // Sample Output:
-// "tpircsepyt";
 // Problem 3:
 // Define a union type StringOrNumber and create a function checkType that uses type guards to return "String" if the input is a string or "Number" if the input is a number.
 
